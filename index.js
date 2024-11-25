@@ -1,13 +1,20 @@
-export default function handler(req, res) {
-  const { t } = req.query; // Obtén el parámetro 't' de la URL.
+const express = require('express');
+const app = express();
+
+// Endpoint para generar texto
+app.get('/txt', (req, res) => {
+  const text = decodeURIComponent(req.query.t || 'Texto por defecto');
   
-  // Convierte 't' en texto plano para el archivo TXT.
-  const text = decodeURIComponent(t || 'Texto por defecto');
-
-  // Configura los headers para enviar un archivo de texto.
+  // Configura los headers para mostrar un archivo de texto
   res.setHeader('Content-Type', 'text/plain');
-  res.setHeader('Content-Disposition', 'attachment; filename="archivo.txt"');
+  res.setHeader('Content-Disposition', 'inline');
 
-  // Envía el contenido.
-  res.status(200).send(text);
-}
+  // Envía el texto como respuesta
+  res.send(text);
+});
+
+// Puerto dinámico para Vercel
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+  console.log(`Servidor corriendo en el puerto ${port}`);
+});
