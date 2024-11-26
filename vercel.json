@@ -12,7 +12,7 @@
       "dest": "index.js"
     },
     {
-      "src": "/txt",
+      "src": "/data",
       "dest": "index.js"
     }
   ]
