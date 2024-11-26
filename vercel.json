@@ -10,6 +10,10 @@
     {
       "src": "/txt",
       "dest": "index.js"
+    },
+    {
+      "src": "/txt",
+      "dest": "index.js"
     }
   ]
 }
